@@ -140,16 +140,16 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        url: https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.1.1.tar.gz
-        sha256: da914ab2414b768c045e2024c2bf36a7da72e21e91b116f5c8e65b9049051c0d
+        url: https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.2.0.tar.gz
+        sha256: 30a5a442918bdcf4470af540ffc1256bf4d2188fef68c8307330ac2ff8d42733
   - name: models
     buildsystem: simple
     build-commands:
       - mkdir models
-      - bsdtar -xvf firefox-models.tar.xz -C models/
+      - bsdtar --no-same-owner -xvf firefox-models.tar.xz -C models/
       - install -Dm644 -t ${FLATPAK_DEST}/share/localtranslate/models/firefox/ models/firefox/*
     sources:
       - type: file
         dest-filename: firefox-models.tar.xz
-        url: https://github.com/terslang/LocalTranslate/releases/download/v0.0.1/firefox-models.tar.xz
-        sha256: 32a28ff9672b23a32a08f85b98fda04ea0111a10cb3267fc1991cd19d10b3116
+        url: https://github.com/terslang/LocalTranslate/releases/download/v0.2.0/firefox-models.tar.xz
+        sha256: b7d11488f11552616734369feb4011d94bcba4c9283145a99b81b742a6af4f29
