@@ -146,7 +146,7 @@ modules:
     buildsystem: simple
     build-commands:
       - mkdir models
-      - bsdtar -xvf firefox-models.tar.xz -C models/
+      - bsdtar --no-same-owner -xvf firefox-models.tar.xz -C models/
       - install -Dm644 -t ${FLATPAK_DEST}/share/localtranslate/models/firefox/ models/firefox/*
     sources:
       - type: file
