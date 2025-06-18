@@ -103,7 +103,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/kroketio/kotki.git
-        commit: e76619431d535866bd91d33920f6eeac06ba0bb5
+        commit: e9a2670b0203c560016c2acbe15c00d5404e399c
   - name: mecab
     buildsystem: autotools
     cleanup:
@@ -140,8 +140,8 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        url: https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.2.0.tar.gz
-        sha256: 30a5a442918bdcf4470af540ffc1256bf4d2188fef68c8307330ac2ff8d42733
+        url: https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.3.0.tar.gz
+        sha256: b6e99e0413d262b9bb327432828961680c46b40e748b45f9daa548e2e5d5edaa
   - name: models
     buildsystem: simple
     build-commands:
@@ -151,5 +151,5 @@ modules:
     sources:
       - type: file
         dest-filename: firefox-models.tar.xz
-        url: https://github.com/terslang/LocalTranslate/releases/download/v0.2.0/firefox-models.tar.xz
-        sha256: b7d11488f11552616734369feb4011d94bcba4c9283145a99b81b742a6af4f29
+        url: https://github.com/terslang/LocalTranslate/releases/download/v0.3.0/firefox-models.tar.xz
+        sha256: c7f1982112e6b6d7189031adc5a828514f03d8e88bd4c946a6e48c46316646c1
