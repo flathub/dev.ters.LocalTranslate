@@ -140,8 +140,8 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        url: https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.3.0.tar.gz
-        sha256: b6e99e0413d262b9bb327432828961680c46b40e748b45f9daa548e2e5d5edaa
+        url: https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.3.1.tar.gz
+        sha256: 84f6c609ad9c73cf04b3b6a6303c13524d11e78583dfd3ecd896c25eae65d64f
   - name: models
     buildsystem: simple
     build-commands:
@@ -151,5 +151,5 @@ modules:
     sources:
       - type: file
         dest-filename: firefox-models.tar.xz
-        url: https://github.com/terslang/LocalTranslate/releases/download/v0.3.0/firefox-models.tar.xz
-        sha256: c7f1982112e6b6d7189031adc5a828514f03d8e88bd4c946a6e48c46316646c1
+        url: https://github.com/terslang/LocalTranslate/releases/download/v0.3.1/firefox-models.tar.xz
+        sha256: 98b8cd0a0dcae0bd842b733ad00f0a3eda5c66911e51a9f3d432af84e78014d9
