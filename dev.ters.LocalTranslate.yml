@@ -140,8 +140,8 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        url: https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.3.1.tar.gz
-        sha256: 84f6c609ad9c73cf04b3b6a6303c13524d11e78583dfd3ecd896c25eae65d64f
+        url: https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.3.2.tar.gz
+        sha256: dbc0e9f93d2b78df54a975f54cefb9acb24662bdda599bb5479f1ff5c02a5432
   - name: models
     buildsystem: simple
     build-commands:
