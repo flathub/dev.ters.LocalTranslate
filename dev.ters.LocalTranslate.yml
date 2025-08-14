@@ -79,8 +79,7 @@ modules:
     config-opts:
       - "-DSTATIC=OFF"
       - "-DSHARED=ON"
-      - "-DCMAKE_C_FLAGS=-O3 -march=broadwell"
-      - "-DCMAKE_CXX_FLAGS=-O3 -march=broadwell"      
+      - "-DBUILD_ARCH=x86-64"
     sources:
       - type: archive
         url: https://github.com/kroketio/marian-lite/archive/refs/tags/0.2.9.tar.gz
