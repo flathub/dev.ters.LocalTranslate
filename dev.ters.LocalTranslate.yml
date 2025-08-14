@@ -79,6 +79,7 @@ modules:
     config-opts:
       - "-DSTATIC=OFF"
       - "-DSHARED=ON"
+      - "-DBUILD_ARCH=x86-64"
     sources:
       - type: archive
         url: https://github.com/kroketio/marian-lite/archive/refs/tags/0.2.9.tar.gz
