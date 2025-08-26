@@ -120,6 +120,7 @@ modules:
             - "-DSTATIC=OFF"
             - "-DSHARED=ON"
             - "-DARM=ON"
+            - "-DBUILD_ARCH=armv8-a"
         x86_64:
           config-opts:
             - "-DSTATIC=OFF"
@@ -131,6 +132,8 @@ modules:
         sha256: ff434410b6dfa48c5ea7a08f2a292a22e2720f37fff801bf972a18739a691663
       - type: patch
         path: "patches/missing-header.patch"
+      - type: patch
+        path: "patches/unset-intrinsics-arm.patch"
   - name: rapidjson
     buildsystem: cmake-ninja
     config-opts:
