@@ -119,6 +119,7 @@ modules:
           config-opts:
             - "-DSTATIC=OFF"
             - "-DSHARED=ON"
+            - "-DARM=ON"
         x86_64:
           config-opts:
             - "-DSTATIC=OFF"
@@ -189,6 +190,8 @@ modules:
       - type: archive
         url: https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.4.0.tar.gz
         sha256: 834e45aa65e20b25dbdf8bcc8af4fc77b4a0e8b0c846f40b47204d5fde9bced4
+      - type: patch
+        path: "patches/arm.patch"
   - name: models
     buildsystem: simple
     build-commands:
