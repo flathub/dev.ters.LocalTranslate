@@ -113,16 +113,17 @@ modules:
         sha256: 59068edc3420e75c5ff85ecfd80a77196fb3a151227a666cc20abb313a5360bf
   - name: marian-lite
     buildsystem: cmake-ninja
-    arch:
-      aarch64:
-        config-opts:
-          - "-DSTATIC=OFF"
-          - "-DSHARED=ON"
-      x86_64:
-        config-opts:
-          - "-DSTATIC=OFF"
-          - "-DSHARED=ON"
-          - "-DBUILD_ARCH=x86-64"
+    build-options:
+      arch:
+        aarch64:
+          config-opts:
+            - "-DSTATIC=OFF"
+            - "-DSHARED=ON"
+        x86_64:
+          config-opts:
+            - "-DSTATIC=OFF"
+            - "-DSHARED=ON"
+            - "-DBUILD_ARCH=x86-64"
     sources:
       - type: archive
         url: https://github.com/kroketio/marian-lite/archive/refs/tags/0.2.9.tar.gz
