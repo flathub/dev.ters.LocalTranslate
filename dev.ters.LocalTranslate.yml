@@ -12,6 +12,8 @@ rename-icon: "localtranslate"
 modules:
   - name: intgemm
     buildsystem: cmake-ninja
+    skip-arches:
+      - aarch64
     sources:
       - type: archive
         url: https://github.com/kroketio/intgemm/archive/refs/tags/0.0.3.tar.gz
@@ -69,23 +71,69 @@ modules:
     buildsystem: simple
     build-commands:
       - make -j$FLATPAK_BUILDER_N_JOBS
-      - make -j$FLATPAK_BUILDER_N_JOBS PREFIX=/app install  
+      - make -j$FLATPAK_BUILDER_N_JOBS PREFIX=/app install
     sources:
       - type: archive
         url: https://github.com/OpenMathLib/OpenBLAS/archive/refs/tags/v0.3.29.tar.gz
-        sha256: 38240eee1b29e2bde47ebb5d61160207dc68668a54cac62c076bb5032013b1eb        
+        sha256: 38240eee1b29e2bde47ebb5d61160207dc68668a54cac62c076bb5032013b1eb
+  - name: cpuinfo
+    buildsystem: cmake-ninja
+    only-arches:
+      - aarch64
+    config-opts:
+      - "-DCPUINFO_BUILD_UNIT_TESTS=OFF"
+      - "-DCPUINFO_BUILD_MOCK_TESTS=OFF"
+      - "-DCPUINFO_BUILD_BENCHMARKS=OFF"
+    sources:
+      - type: git
+        url: https://github.com/pytorch/cpuinfo.git
+        commit: 8a9210069b5a37dd89ed118a783945502a30a4ae
+  - name: ruy
+    buildsystem: cmake-ninja
+    only-arches:
+      - aarch64
+    config-opts:
+      - "-DRUY_FIND_CPUINFO=ON"
+      - "-DRUY_MINIMAL_BUILD=ON"
+      - "-DCMAKE_POSITION_INDEPENDENT_CODE=ON"
+    sources:
+      - type: git
+        url: https://github.com/google/ruy.git
+        commit: 9940fbf1e0c0863907e77e0600b99bb3e2bc2b9f
+  - name: simde
+    buildsystem: simple
+    only-arches:
+      - aarch64
+    build-commands:
+      - install -d /app/include/simde
+      - cp -r arm mips wasm x86 /app/include/simde/
+    sources:
+      - type: archive
+        url: https://github.com/simd-everywhere/simde/releases/download/v0.8.2/simde-amalgamated-0.8.2.tar.xz
+        sha256: 59068edc3420e75c5ff85ecfd80a77196fb3a151227a666cc20abb313a5360bf
   - name: marian-lite
     buildsystem: cmake-ninja
-    config-opts:
-      - "-DSTATIC=OFF"
-      - "-DSHARED=ON"
-      - "-DBUILD_ARCH=x86-64"
+    build-options:
+      arch:
+        aarch64:
+          config-opts:
+            - "-DSTATIC=OFF"
+            - "-DSHARED=ON"
+            - "-DARM=ON"
+            - "-DBUILD_ARCH=armv8-a"
+        x86_64:
+          config-opts:
+            - "-DSTATIC=OFF"
+            - "-DSHARED=ON"
+            - "-DBUILD_ARCH=x86-64"
     sources:
       - type: archive
         url: https://github.com/kroketio/marian-lite/archive/refs/tags/0.2.9.tar.gz
         sha256: ff434410b6dfa48c5ea7a08f2a292a22e2720f37fff801bf972a18739a691663
       - type: patch
         path: "patches/missing-header.patch"
+      - type: patch
+        path: "patches/unset-intrinsics-arm.patch"
   - name: rapidjson
     buildsystem: cmake-ninja
     config-opts:
@@ -107,6 +155,8 @@ modules:
         commit: e9a2670b0203c560016c2acbe15c00d5404e399c
       - type: patch
         path: "patches/batch-processing.patch"
+      - type: patch
+        path: "patches/aarch64-kotki.patch"
   - name: mecab
     buildsystem: autotools
     cleanup:
@@ -145,6 +195,8 @@ modules:
       - type: archive
         url: https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.4.0.tar.gz
         sha256: 834e45aa65e20b25dbdf8bcc8af4fc77b4a0e8b0c846f40b47204d5fde9bced4
+      - type: patch
+        path: "patches/arm.patch"
   - name: models
     buildsystem: simple
     build-commands:
