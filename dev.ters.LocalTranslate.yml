@@ -155,6 +155,8 @@ modules:
         commit: e9a2670b0203c560016c2acbe15c00d5404e399c
       - type: patch
         path: "patches/batch-processing.patch"
+      - type: patch
+        path: "patches/aarch64-kotki.patch"
   - name: mecab
     buildsystem: autotools
     cleanup:
