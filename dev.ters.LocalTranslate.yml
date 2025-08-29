@@ -70,8 +70,8 @@ modules:
   - name: openblas
     buildsystem: simple
     build-commands:
-      - make -j$FLATPAK_BUILDER_N_JOBS
-      - make -j$FLATPAK_BUILDER_N_JOBS PREFIX=/app install
+      - if [ "${FLATPAK_ARCH}" = "x86_64" ]; then make -j$FLATPAK_BUILDER_N_JOBS DYNAMIC_ARCH=1 TARGET=NEHALEM; else make -j$FLATPAK_BUILDER_N_JOBS; fi
+      - if [ "${FLATPAK_ARCH}" = "x86_64" ]; then make -j$FLATPAK_BUILDER_N_JOBS PREFIX=/app install DYNAMIC_ARCH=1 TARGET=NEHALEM; else make -j$FLATPAK_BUILDER_N_JOBS PREFIX=/app install; fi
     sources:
       - type: archive
         url: https://github.com/OpenMathLib/OpenBLAS/archive/refs/tags/v0.3.29.tar.gz
