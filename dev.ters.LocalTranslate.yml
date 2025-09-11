@@ -128,12 +128,8 @@ modules:
             - "-DBUILD_ARCH=x86-64"
     sources:
       - type: archive
-        url: https://github.com/kroketio/marian-lite/archive/refs/tags/0.2.9.tar.gz
-        sha256: ff434410b6dfa48c5ea7a08f2a292a22e2720f37fff801bf972a18739a691663
-      - type: patch
-        path: "patches/missing-header.patch"
-      - type: patch
-        path: "patches/unset-intrinsics-arm.patch"
+        url: https://github.com/terslang/marian-lite/archive/refs/tags/v0.2.9-1.tar.gz
+        sha256: 13a681c936f15c0d95d42fa78fc7c468aa3d08e40ee608e080b825098488c809
   - name: rapidjson
     buildsystem: cmake-ninja
     config-opts:
@@ -150,13 +146,9 @@ modules:
       - "-DSTATIC=OFF"
       - "-DSHARED=ON"
     sources:
-      - type: git
-        url: https://github.com/kroketio/kotki.git
-        commit: e9a2670b0203c560016c2acbe15c00d5404e399c
-      - type: patch
-        path: "patches/batch-processing.patch"
-      - type: patch
-        path: "patches/aarch64-kotki.patch"
+      - type: archive
+        url: https://github.com/terslang/kotki/archive/refs/tags/v0.6.0-1.tar.gz
+        sha256: 6784f82cd5bd9be5a9de28a1a30a21881aa0cbc9ac2a0a744afd82fbff57a50c
   - name: mecab
     buildsystem: autotools
     cleanup:
@@ -193,10 +185,8 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        url: https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.4.0.tar.gz
-        sha256: 834e45aa65e20b25dbdf8bcc8af4fc77b4a0e8b0c846f40b47204d5fde9bced4
-      - type: patch
-        path: "patches/arm.patch"
+        url: https://github.com/terslang/LocalTranslate/archive/refs/tags/v0.5.0.tar.gz
+        sha256: fcccc1d4486c83244cfb407df3a940087a12c66af7613b20f893b4775c72b234
   - name: models
     buildsystem: simple
     build-commands:
@@ -206,5 +196,5 @@ modules:
     sources:
       - type: file
         dest-filename: firefox-models.tar.xz
-        url: https://github.com/terslang/LocalTranslate/releases/download/v0.3.1/firefox-models.tar.xz
-        sha256: 98b8cd0a0dcae0bd842b733ad00f0a3eda5c66911e51a9f3d432af84e78014d9
+        url: https://github.com/terslang/LocalTranslate/releases/download/v0.5.0/firefox-models.tar.xz
+        sha256: 5e773a3b00ea4a6d3b9e27162c86c9a6646cb11603397a2d560f95bf2ca8f59d
