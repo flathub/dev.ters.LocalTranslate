@@ -67,15 +67,30 @@ modules:
       - type: archive
         url: https://github.com/jbeder/yaml-cpp/archive/refs/tags/0.8.0.tar.gz
         sha256: fbe74bbdcee21d656715688706da3c8becfd946d92cd44705cc6098bb23b3a16
+
   - name: openblas
     buildsystem: simple
     build-commands:
       - if [ "${FLATPAK_ARCH}" = "x86_64" ]; then make -j$FLATPAK_BUILDER_N_JOBS DYNAMIC_ARCH=1 TARGET=NEHALEM; else make -j$FLATPAK_BUILDER_N_JOBS; fi
       - if [ "${FLATPAK_ARCH}" = "x86_64" ]; then make -j$FLATPAK_BUILDER_N_JOBS PREFIX=/app install DYNAMIC_ARCH=1 TARGET=NEHALEM; else make -j$FLATPAK_BUILDER_N_JOBS PREFIX=/app install; fi
+    cleanup:
+      - /bin
+      - /include
+      - /lib/cmake
+      - /lib/debug
+      - /lib/*.a
+      - /lib/*.la
+      - /lib/pkgconfig
+      - /share/man
     sources:
       - type: archive
-        url: https://github.com/OpenMathLib/OpenBLAS/archive/refs/tags/v0.3.29.tar.gz
-        sha256: 38240eee1b29e2bde47ebb5d61160207dc68668a54cac62c076bb5032013b1eb
+        url: https://github.com/OpenMathLib/OpenBLAS/releases/download/v0.3.30/OpenBLAS-0.3.30.tar.gz
+        sha512: c726ced2d3e6ebd3ddcd0b13c255bb43fae8c12d2aec15e9ef992b0bc7099996c02cd284ccaaa7b5fac3f23f280b098063dd60f521d97a68dc183ab192fcccdb
+        x-checker-data:
+          type: anitya
+          project-id: 2540
+          url-template: https://github.com/OpenMathLib/OpenBLAS/archive/v$version.tar.gz
+
   - name: cpuinfo
     buildsystem: cmake-ninja
     only-arches:
