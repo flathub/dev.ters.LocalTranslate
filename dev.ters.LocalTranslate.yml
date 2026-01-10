@@ -12,8 +12,8 @@ rename-icon: "localtranslate"
 modules:
   - name: intgemm
     buildsystem: cmake-ninja
-    skip-arches:
-      - aarch64
+    only-arches:
+      - x86_64
     sources:
       - type: archive
         url: https://github.com/kroketio/intgemm/archive/refs/tags/0.0.3.tar.gz
