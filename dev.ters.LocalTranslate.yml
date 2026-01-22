@@ -60,7 +60,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/SRombauts/SQLiteCpp.git
-        tag: "3.3.2"
+        tag: "3.3.3"
   - name: yaml-cpp
     buildsystem: cmake-ninja
     sources:
