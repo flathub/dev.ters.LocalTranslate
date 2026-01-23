@@ -63,6 +63,8 @@ modules:
         tag: "3.3.3"
   - name: yaml-cpp
     buildsystem: cmake-ninja
+    config-opts:
+      - "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
     sources:
       - type: archive
         url: https://github.com/jbeder/yaml-cpp/archive/refs/tags/0.8.0.tar.gz
